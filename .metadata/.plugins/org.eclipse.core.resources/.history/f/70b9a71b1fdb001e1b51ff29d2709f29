@@ -1,0 +1,5 @@
+package com.jsp.spring_core_annotation_project.dto;
+
+public class Address {
+
+}

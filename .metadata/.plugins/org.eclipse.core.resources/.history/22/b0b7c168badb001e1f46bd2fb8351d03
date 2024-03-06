@@ -1,0 +1,28 @@
+package com.jsp.spring_jdbc.dto;
+
+import org.springframework.beans.factory.annotation.Value;
+
+public class Student {
+	private int studentId;
+	private String studentName;
+	private String studentPhone;
+	public int getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(@Value("555") int studentId) {
+		this.studentId = studentId;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(@Value("RAj") String studentName) {
+		this.studentName = studentName;
+	}
+	public String getStudentPhone() {
+		return studentPhone;
+	}
+	public void setStudentPhone(@Value("9233221") String studentPhone) {
+		this.studentPhone = studentPhone;
+	}
+
+}

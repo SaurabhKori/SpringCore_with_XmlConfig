@@ -1,0 +1,30 @@
+package com.jsp.spring_jdbcwithannotation_config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+/**
+ * @author Saurabh
+ */
+
+@Configuration
+public class JdbcConfig {
+	// DataSource is  a interface which is present javax.sql package,this is get the connection with the help of DriverManagerDataSource
+	public DataSource getDataSource() {
+
+		DriverManagerDataSource driver =new DriverManagerDataSource();
+		driver.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		driver.setUrl("jdbc:mysql//localhost:3306/springjdbc");
+		driver.setUsername("root");
+		driver.setPassword("root");
+		return driver;
+	}
+	public JdbcTemplate gettemplet() {
+		JdbcTemplate tem=new JdbcTemplate();
+		tem.setDataSource(getDataSource());
+		return tem;
+	}
+
+}

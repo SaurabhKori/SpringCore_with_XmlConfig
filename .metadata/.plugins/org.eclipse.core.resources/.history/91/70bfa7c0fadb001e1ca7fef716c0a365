@@ -1,0 +1,39 @@
+package com.jsp.spring_jdbcwithannotation_config.dao;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.jsp.spring_jdbcwithannotation_config.dto.Student;
+
+public class StudentDao {
+	private JdbcTemplate tem;
+    public void insert(Student student) {
+    	String insert ="insert into studentdetail(studentId,studentName,studentPhone) value(?,?,?)";
+    	this.tem.update(insert,student.getStudentId(),student.getStudentName(),student.getStudentPhone());
+    }
+    public void update(Student student) {
+    	String update ="update  studentdetail set studentName=?,studentPhone=? where studentId=?";
+    	this.tem.update(update,student.getStudentName(),student.getStudentPhone(),student.getStudentId());
+    }
+    public void delete(int id) {
+    	String delete="delete from studentdetail where studentId=?";
+    	this.tem.update(delete,id);
+    }
+    public void fetchOnedata(int id) {
+    	String fetch="select * from studentdetail where studentId=?";
+    	this.tem.queryForObject(fetch, rollmapp,id);
+    }
+	public JdbcTemplate getTem() {
+		return tem;
+	}
+
+	public void setTem(JdbcTemplate tem) {
+		this.tem = tem;
+	}
+
+	@Override
+	public String toString() {
+		return "StudentDao [tem=" + tem + "]";
+	}
+	
+
+}

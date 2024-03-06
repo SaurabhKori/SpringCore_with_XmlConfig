@@ -1,0 +1,38 @@
+package com.jsp.spring_jdbc.dao;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import com.jsp.spring_jdbc.dto.Student;
+
+public class StudentDao {
+	private JdbcTemplate jdbctemplate;
+	public void insertdata(Student student) {
+		String insert="Insert into studentdetail(studentId,studentName,studentPhone) value(?,?,?)";
+	this.jdbctemplate.update(insert,student.getStudentId(),student.getStudentName(),student.getStudentPhone());
+	System.out.println("Insert data.......");
+	}
+	public void update(Student student) {
+		String update="update studentdetail set studentName=?,studentPhone=? where studentId=?";
+		this.jdbctemplate.update(update,student.getStudentName(),student.getStudentPhone(),student.getStudentId());
+		System.out.println("Update data........");
+	}
+	public void delete(int studentId) {
+		String delete="delete from studentdetail where studentId=?";
+		this.jdbctemplate.update(delete,studentId);
+		System.out.println("Delete data............");
+	}
+	public void getOneDate(int id) {
+		String fetch="Select * from studentdetail where studentId=?";
+		RowMapper<Student> rowMapper=new RowMapperImple();
+		this.jdbctemplate.queryForObject(fetch,rowMapper,id);
+	}
+	public JdbcTemplate getJdbctemplate() {
+		return jdbctemplate;
+	}
+	public void setJdbctemplate(JdbcTemplate jdbctemplate) {
+		this.jdbctemplate = jdbctemplate;
+	}
+	
+
+}

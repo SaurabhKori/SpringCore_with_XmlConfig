@@ -1,0 +1,19 @@
+package com.jsp.spring_jdbcwithannotation_config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+/**
+ * @author Saurabh
+ */
+
+@Configuration
+public class JdbcConfig {
+	// DataSource is 
+	public DataSource getDataSource() {
+		DriverManagerDataSource driver =new DriverManagerDataSource();
+		
+	}
+
+}

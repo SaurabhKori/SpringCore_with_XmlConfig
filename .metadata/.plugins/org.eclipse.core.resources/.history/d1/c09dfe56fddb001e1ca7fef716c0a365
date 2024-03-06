@@ -1,0 +1,22 @@
+package com.jsp.spring_jdbcwithannotation_config;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.jsp.spring_jdbcwithannotation_config.dao.StudentDao;
+import com.jsp.spring_jdbcwithannotation_config.dto.Student;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context = new AnnotationConfigApplicationContext(JdbcConfig.class);
+        StudentDao st=context.getBean("stdao",StudentDao.class);
+        Student student=new Student(999,"Amit", 38384783);
+        st.insert(student);
+    }
+}
